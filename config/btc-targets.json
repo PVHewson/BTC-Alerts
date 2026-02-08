@@ -1,0 +1,10 @@
+{
+  "priceSource": "coinbase",
+  "targets": [
+    { "id": "btc_70000", "label": "BTC < 70k", "threshold": 70000, "buffer": 500 },    
+    { "id": "btc_65000", "label": "BTC < 65k", "threshold": 65000, "buffer": 500 },
+    { "id": "btc_60000", "label": "BTC < 60k", "threshold": 60000, "buffer": 500 },
+    { "id": "btc_55000", "label": "BTC < 55k", "threshold": 55000, "buffer": 500 },
+    { "id": "btc_50000", "label": "BTC < 50k", "threshold": 50000, "buffer": 500 }
+  ]
+}

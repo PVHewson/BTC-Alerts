@@ -1,0 +1,53 @@
+name: BTC price alerts (repo state)
+
+on:
+  schedule:
+    - cron: "25,55 * * * *" #Runs every 30 min (UTC)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Show trigger
+        run: |
+           echo "Event: $GITHUB_EVENT_NAME"
+           date -u
+          
+      - name: Check price & compute alerts
+        id: check
+        run: node scripts/btc-alert-hysteresis.mjs
+
+      - name: Commit state update
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state/btc-alert-state.json
+          git commit -m "Update BTC alert state [skip ci]"
+          git push
+
+      - name: Send email (Gmail SMTP) if alert needed
+        if: steps.check.outputs.alert_needed == 'true'
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: ${{ steps.check.outputs.alert_subject }}
+          to: ${{ secrets.ALERT_TO }}
+          from: ${{ secrets.ALERT_FROM }}
+          body: ${{ steps.check.outputs.alert_body }}
