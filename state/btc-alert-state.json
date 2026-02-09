@@ -17,9 +17,9 @@
       "lastAlertAtMs": null
     },
     "btc_70000": {
-      "armed": true,
-      "lastState": "above",
-      "lastAlertAtMs": null
+      "armed": false,
+      "lastState": "below",
+      "lastAlertAtMs": 1770629336874
     },
     "btc_65000": {
       "armed": true,
