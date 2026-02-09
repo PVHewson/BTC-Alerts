@@ -1,4 +1,4 @@
-name: BTC price alerts (repo state)
+name: BTC price alerts
 
 on:
   schedule:
