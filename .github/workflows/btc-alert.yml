@@ -2,7 +2,7 @@ name: BTC price alerts (repo state)
 
 on:
   schedule:
-    - cron: "21,51 * * * *" #Runs every 30 min (UTC)
+    - cron: "12,42 18-23,0-9 * * *"
   workflow_dispatch: {}
 
 permissions:
