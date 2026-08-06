@@ -1,1 +1,1 @@
-# BTC-Alerts v1
+# BTC-Alerts v1.0
