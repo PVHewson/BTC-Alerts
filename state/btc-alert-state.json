@@ -22,9 +22,9 @@
       "lastAlertAtMs": 1794540828074
     },
     "btc_65000": {
-      "armed": true,
-      "lastState": "above",
-      "lastAlertAtMs": 1784832490336
+      "armed": false,
+      "lastState": "below",
+      "lastAlertAtMs": 1794692403957
     }
   }
 }
