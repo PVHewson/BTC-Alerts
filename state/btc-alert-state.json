@@ -2,9 +2,9 @@
   "version": 1,
   "targets": {
     "btc_60000": {
-      "armed": true,
-      "lastState": "above",
-      "lastAlertAtMs": 1795194880250
+      "armed": false,
+      "lastState": "below",
+      "lastAlertAtMs": 1795490842013
     },
     "btc_55000": {
       "armed": true,
